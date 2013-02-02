@@ -2,6 +2,20 @@
 
 <%= form_for @user, html: { class:"form-horizontal"} do |f|%> 
 <!-- creat user from user controller user class form-horizontal and save all in |f|--> 
+
+<% if @user.errors.any? %> <!-- ger @user from user controller --> <!-- any if have something return true if not return fault -->
+  <div id="error_explanation">
+  <div class="alert alert-error">
+    The from contains <%= pluralize(@user.errors.count, "error") %>.
+  </div>
+  <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li>* <%= msg %></li>
+    <% end %>
+  </ul>
+  </div>
+<% end %>
+
 <div class="control-group">
     <label class="control-label">Name</label>
     <div class="controls">
