@@ -11,6 +11,8 @@
 
 class Post < ActiveRecord::Base
   attr_accessible :body, :title
+  has_many :comments #relation of model comments (many)
+  belongs_to :user #relation of model user (1)
     validates :body, presence: true
     validates :title, presence: true
 end

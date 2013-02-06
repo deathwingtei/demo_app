@@ -1,5 +1,19 @@
-<h1>Editing post</h1> 
+<h1>Editing User</h1> 
 <%= form_for(@user) do |f| %>
+
+<% if @user.errors.any? %> <!-- ger @user from user controller --> <!-- any if have something return true if not return fault -->
+  <div id="error_explanation">
+  <div class="alert alert-error">
+    The from contains <%= pluralize(@user.errors.count, "error") %>.
+  </div>
+  <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li>* <%= msg %></li>
+    <% end %>
+  </ul>
+  </div>
+<% end %>
+
  <div class="field">
     <%= f.label :email %><br />
     <%= f.text_field :email %>
